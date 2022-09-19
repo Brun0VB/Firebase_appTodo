@@ -1,3 +1,4 @@
+import { UtilService } from './services/util.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -10,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},UtilService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
