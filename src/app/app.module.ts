@@ -7,6 +7,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { UtilService } from './services/util.service';
+
 // Firebase services + environment module
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -23,7 +25,7 @@ import { environment } from '../environments/environment';
   AngularFirestoreModule,
   AngularFireStorageModule,
   AngularFireDatabaseModule,],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },UtilService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -13,8 +13,8 @@ export class LoginPage implements OnInit {
   ) {}
   ngOnInit() {}
   logIn(email, password) {
-    this.authService.SignIn(email.value, password.value)
-      .then((res) => {
+    
+    this.authService.SignIn(email.value, password.value).then((res) => {
         if(this.authService.isEmailVerified) {
           this.router.navigate(['dashboard']);          
         } else {
@@ -24,5 +24,6 @@ export class LoginPage implements OnInit {
       }).catch((error) => {
         window.alert(error.message)
       })
+    console.log(this.authService.SignIn(email.value, password.value))
   }
 }
