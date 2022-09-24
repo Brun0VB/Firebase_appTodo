@@ -1,5 +1,5 @@
 {
-  "name": "ionic-firebase-authentication",
+  "name": "ToDoList",
   "integrations": {
     "capacitor": {}
   },
