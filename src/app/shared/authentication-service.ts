@@ -7,6 +7,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +17,8 @@ export class AuthenticationService {
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    public loadingCtrl: LoadingController
   ) {
     this.ngFireAuth.authState.subscribe((user) => {
       if (user) {
@@ -40,9 +42,7 @@ export class AuthenticationService {
   // Email verification when new user register
   SendVerificationMail() {
     return this.ngFireAuth.currentUser.then((user) => {
-      return user.sendEmailVerification().then(() => {
-        this.router.navigate(['login']);
-      });
+      return user.sendEmailVerification();
     });
   }
   // Recover password
@@ -103,10 +103,14 @@ export class AuthenticationService {
     });
   }
   // Sign-out
-  SignOut() {
-    return this.ngFireAuth.signOut().then(() => {
+  async SignOut() {
+    await this.ngFireAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
+      
     });
+
+
+
   }
 }

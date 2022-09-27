@@ -21,5 +21,5 @@ export class RegistrationPage implements OnInit {
     }).catch((error) => {
       window.alert(error.message)
     })
-}
+  }
 }

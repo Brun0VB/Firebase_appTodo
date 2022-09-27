@@ -12,11 +12,14 @@ export class DashboardPage {
   tarefas: any[] = [];
 
   constructor(private alertCtrl: AlertController, private UtilService:UtilService, private ActionSheetController: ActionSheetController,public authService: AuthenticationService) {
+    this.userData = JSON.parse(localStorage.getItem('user'));
+    console.log(this.userData)
     let tarefaJson = localStorage.getItem('TarefaDB');
     if(tarefaJson!=null){
       this.tarefas = JSON.parse(tarefaJson);
     }
   }
+  userData: any;
 
   async showAdd() {
     const alert = await this.alertCtrl.create({
